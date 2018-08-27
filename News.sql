@@ -1,0 +1,19 @@
+USE CBSS;
+DROP TABLE IF EXISTS `News`;
+CREATE TABLE `News` (
+	`NewsID` INT NOT NULL AUTO_INCREMENT,
+	`BankID` INT NOT NULL ,
+	`BranchID` INT NOT NULL ,
+	`NewsTitle` VARCHAR(50) NOT NULL,
+	`ThumbnailUrl` VARCHAR(200) NOT NULL,
+	`NewsDate` DATETIME NOT NULL,
+	`Status` CHAR(1) NOT NULL DEFAULT 'A',
+	`InUser` VARCHAR(15) NOT NULL DEFAULT 'sys',
+	`InDate` TIMESTAMP NOT NULL DEFAULT current_timestamp,
+	`LastEditUser` VARCHAR(15) NOT NULL DEFAULT 'sys',
+	`LastEditDate` TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp,
+	PRIMARY KEY (`NewsID`)
+) ENGINE = INNODB DEFAULT CHAR SET = UTF8;
+
+CREATE INDEX News_Index_BankID ON `News`(`BankID`);
+CREATE INDEX News_Index_BranchID ON `News`(`BranchID`);

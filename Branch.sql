@@ -1,0 +1,14 @@
+USE CBSS;
+DROP TABLE IF EXISTS `Branch`;
+CREATE TABLE `Branch` (
+	`BranchID` INT NOT NULL AUTO_INCREMENT,
+	`BranchName` VARCHAR(15) NOT NULL ,
+	`BankID` INT NOT NULL ,
+	`InUser` VARCHAR(15) NOT NULL DEFAULT 'sys',
+	`InDate` TIMESTAMP NOT NULL DEFAULT current_timestamp,
+	`LastEditUser` VARCHAR(15) NOT NULL DEFAULT 'sys',
+	`LastEditDate` TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp,
+	PRIMARY KEY (`BranchID`)
+) ENGINE = INNODB AUTO_INCREMENT=200000 DEFAULT CHAR SET = UTF8;
+
+CREATE INDEX Branch_Index_BankID ON `Branch`(`BankID`);
